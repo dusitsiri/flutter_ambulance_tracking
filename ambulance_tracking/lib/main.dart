@@ -1,72 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import './Emergency.dart';
+import './First_aid.dart';
+import './Tracking.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
-class MyApp extends StatelessWidget {
- 
+class MyApp extends StatefulWidget {
+  @override
+  MyAppState createState() => new MyAppState();
+}
+
+class MyAppState extends State<MyApp> {
+  int _selectedPage = 0;
+  final _pageOptions = [
+    EmergencyPage(),
+    TrackingPage(),
+    First_aidPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Ambulance Tracking',
       theme: ThemeData(
-      
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.green,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
- 
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-  
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-  
-    return Scaffold(
-      appBar: AppBar(
-       
-        title: Text(widget.title),
-      ),
-      body: Center(
-      
-        child: Column(
-        
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Ambulance Tracking"),
+          actions: <Widget>[
+            new IconButton(
+              icon: const Icon(Icons.account_circle),
+              // onPressed: _accountCircle,
             ),
           ],
         ),
+        body: _pageOptions[_selectedPage],
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedPage,
+          onTap: (int index) {
+            setState(() {
+             _selectedPage = index; 
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.add_alert), title: Text('Emergency')),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.traffic), title: Text('Tracking')),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.library_books), title: Text('First aid'))
+          ],
+          fixedColor: Colors.deepOrange,
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), 
     );
   }
 }
