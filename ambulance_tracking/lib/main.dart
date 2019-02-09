@@ -34,7 +34,7 @@ class MyAppState extends State<MyApp> {
           actions: <Widget>[
             new IconButton(
               icon: const Icon(Icons.account_circle),
-              // onPressed: _accountCircle,
+              onPressed: _accountCircle,
             ),
           ],
         ),
@@ -58,5 +58,8 @@ class MyAppState extends State<MyApp> {
         ),
       ),
     );
+  }
+  void _accountCircle(){
+    
   }
 }
