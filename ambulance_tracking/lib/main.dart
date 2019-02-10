@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import './Emergency.dart';
 import './First_aid.dart';
 import './Tracking.dart';
+import './Information.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,6 +20,7 @@ class MyAppState extends State<MyApp> {
     EmergencyPage(),
     TrackingPage(),
     First_aidPage(),
+    InformationPage(),
   ];
 
   @override
@@ -33,7 +35,7 @@ class MyAppState extends State<MyApp> {
           title: Text("Ambulance Tracking"),
           actions: <Widget>[
             new IconButton(
-              icon: const Icon(Icons.account_circle),
+              icon: const Icon(Icons.person_outline),
               onPressed: _accountCircle,
             ),
           ],
