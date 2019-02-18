@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import './Emergency.dart';
-import './First_aid.dart';
+import './Firstaid.dart';
 import './Tracking.dart';
 import './Information.dart';
 
@@ -19,7 +19,7 @@ class MyAppState extends State<MyApp> {
   final _pageOptions = [
     EmergencyPage(),
     TrackingPage(),
-    First_aidPage(),
+    FirstaidPage(),
     InformationPage(),
   ];
 
